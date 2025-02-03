@@ -1,5 +1,13 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import { ref } from 'vue';
+
+const sidebarToggle = ref(false);
+
+const toggleSidebar = () => {
+  sidebarToggle.value = !sidebarToggle.value;
+  document.body.classList.toggle('sidenav-toggled', sidebarToggle.value);
+};
+
 </script>
 
 <template>
