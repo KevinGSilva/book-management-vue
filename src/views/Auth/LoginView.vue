@@ -3,11 +3,40 @@
   import "bootstrap";
 
   import { reactive, ref } from "vue";
+  import api from "@/plugins/axios";
 
   const form = reactive({
     email: "",
     password: "",
   });
+
+  const errorMessage = ref("");
+
+  const validateForm = () => {
+    let isValid = true;
+
+    if (!form.email) {
+      isValid = false;
+      errorMessage.value = "O e-mail é obrigatório.";
+      return;
+    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
+      isValid = false;
+      errorMessage.value = "E-mail inválido.";
+      return;
+    }
+
+    if (!form.password) {
+      isValid = false;
+      errorMessage.value = "A senha é obrigatória.";
+      return;
+    } else if (form.password.length < 6) {
+      isValid = false;
+      errorMessage.value = "A senha deve ter pelo menos 6 caracteres.";
+      return;
+    }
+    
+    return isValid;
+  };
 </script>
 
 <template>
