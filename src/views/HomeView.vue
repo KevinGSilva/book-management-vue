@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { GlHamburger } from '@kalimahapps/vue-icons';
 
 const sidebarToggle = ref(false);
 
@@ -16,8 +17,7 @@ const toggleSidebar = () => {
       <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
               
               <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle" @click="toggleSidebar">
-                  <i data-feather="menu"></i>
-                <i data-feather="menu"></i>
+                <GlHamburger/>
               </button>
               
               <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">SB Admin Pro</a>
