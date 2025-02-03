@@ -37,6 +37,25 @@
     
     return isValid;
   };
+
+  const login = async () => {
+    if (!validateForm()) {
+      return;
+    }
+
+    try {
+      const { data } = await api.post("/api/login", form);
+
+      setToken(data.token);
+      window.location.href = "/";
+    } catch (error) {
+      errorMessage.value = "Credenciais inválidas.";
+    }
+  };
+
+  function setToken(token) {
+    sessionStorage.setItem("auth_token", token);
+  }
 </script>
 
 <template>
