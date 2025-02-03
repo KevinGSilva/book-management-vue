@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { GlHamburger } from '@kalimahapps/vue-icons';
+import { FaAngleDown } from '@kalimahapps/vue-icons';
 
 const sidebarToggle = ref(false);
 
@@ -59,7 +60,7 @@ const toggleSidebar = () => {
                           <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
                               <div class="nav-link-icon"><i data-feather="tool"></i></div>
                               Utilities
-                              <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                              <div class="sidenav-collapse-arrow"><FaAngleDown/></div>
                           </a>
                           <div class="collapse" id="collapseUtilities" data-bs-parent="#accordionSidenav">
                               <nav class="sidenav-menu-nested nav">
