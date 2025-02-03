@@ -1,6 +1,13 @@
 <script setup>
   import "bootstrap/dist/css/bootstrap.min.css";
   import "bootstrap";
+
+  import { reactive, ref } from "vue";
+
+  const form = reactive({
+    email: "",
+    password: "",
+  });
 </script>
 
 <template>
