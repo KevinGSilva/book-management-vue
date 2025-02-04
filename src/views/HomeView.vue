@@ -1,14 +1,21 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { GlHamburger } from '@kalimahapps/vue-icons';
 import { FaAngleDown } from '@kalimahapps/vue-icons';
+import api from '@/plugins/axios';
 
 const sidebarToggle = ref(false);
+const user = ref({});
 
 const toggleSidebar = () => {
   sidebarToggle.value = !sidebarToggle.value;
   document.body.classList.toggle('sidenav-toggled', sidebarToggle.value);
 };
+
+onMounted( async () => {
+  let response = await api.get('/api/user');
+  user.value = response.data;
+});
 
 </script>
 
@@ -31,8 +38,8 @@ const toggleSidebar = () => {
                           <h6 class="dropdown-header d-flex align-items-center">
                               <img class="dropdown-user-img" src="@/assets/img/illustrations/profiles/profile-1.png" />
                               <div class="dropdown-user-details">
-                                  <div class="dropdown-user-details-name">Valerie Luna</div>
-                                  <div class="dropdown-user-details-email">vluna@aol.com</div>
+                  <div class="dropdown-user-details-name">{{ user.name }}</div>
+                  <div class="dropdown-user-details-email">{{ user.email }}</div>
                               </div>
                           </h6>
                           <div class="dropdown-divider"></div>
