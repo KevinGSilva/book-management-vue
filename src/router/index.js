@@ -8,13 +8,15 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
       component: HomeView,
       beforeEnter: (to, from, next) => {
         authMiddleware({ to, next }, () => {
           adminMiddleware({ to, next });
         });
       },
+      children: [
+        
+      ]
     },
     {
       path: '/login',
