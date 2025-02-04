@@ -5,6 +5,6 @@ import "bootstrap";
 </script>
 
 <template>
-      <RouterView />
+      <RouterView/>
 </template>
 
