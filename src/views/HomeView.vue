@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { GlHamburger } from '@kalimahapps/vue-icons';
 import { FaAngleDown } from '@kalimahapps/vue-icons';
+import { AnOutlinedLogout } from '@kalimahapps/vue-icons';
 import api from '@/plugins/axios';
 
 const sidebarToggle = ref(false);
@@ -16,6 +17,11 @@ onMounted( async () => {
   let response = await api.get('/api/user');
   user.value = response.data;
 });
+
+const logout = async () => {
+  await api.post('/api/logout');
+  window.location.href = '/login';
+};
 
 </script>
 
@@ -43,13 +49,11 @@ onMounted( async () => {
                               </div>
                           </h6>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#!">
-                              <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                              Account
-                          </a>
-                          <a class="dropdown-item" href="#!">
-                              <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                              Logout
+                <a class="dropdown-item" href="#!" @click="logout">
+                  <div class="dropdown-item-icon">
+                    <AnOutlinedLogout/>
+                  </div>
+                  Sair
                           </a>
                       </div>
                   </li>
