@@ -20,6 +20,11 @@ const router = createRouter({
           name: 'authors', 
           component: () => import('../views/Authors/AuthorsListView.vue'),
         },
+        {
+          path: '/authors/create', 
+          name: 'authors.create', 
+          component: () => import('../components/authors/Form.vue'),
+        },
       ]
     },
     {
