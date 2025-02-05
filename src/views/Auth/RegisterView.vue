@@ -1,4 +1,5 @@
 <script setup>
+import api from '@/plugins/axios';
 import { reactive, computed, ref } from 'vue';
 
 const form = reactive({
@@ -44,6 +45,22 @@ const errors = computed(() => {
 
 const isFormValid = computed(() => Object.keys(errors.value).length === 0);
 
+const submitForm = async () => {
+  submitted.value = true;
+
+  if (isFormValid.value) {
+    const response = await api.post('/api/register', form);
+
+    if (response.status === 201) {
+      setToken(response.data.token);
+      window.location.href = '/';
+    }
+  }
+};
+
+function setToken(token) {
+  sessionStorage.setItem("auth_token", token);
+}
 </script>
 
 <template>
