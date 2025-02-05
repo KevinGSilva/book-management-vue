@@ -6,6 +6,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import { AnFilledDelete } from '@kalimahapps/vue-icons';
 import { RouterLink } from 'vue-router';
 import { FeEdit } from '@kalimahapps/vue-icons';
+import { format, parseISO } from 'date-fns';
 
 const books = ref([]);
 
@@ -35,6 +36,11 @@ const deleteBook = async (id) => {
       Swal.fire('Erro!', error.response.data.message, 'error');
     }
   }
+};
+
+const formatDate = (dateString) => {
+  if (!dateString) return '';
+  return format(parseISO(dateString), 'dd/MM/yyyy');
 };
 </script>
 
