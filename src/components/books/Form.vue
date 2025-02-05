@@ -2,6 +2,9 @@
 import api from '@/plugins/axios';
 import { computed, reactive, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+import router from '@/router';
 
 const route = useRoute();
 const bookId = route.params.id || null;
@@ -54,6 +57,30 @@ const errors = computed(() => {
 });
 
 const isFormValid = computed(() => Object.keys(errors.value).length === 0);
+
+const updateOrCreateAuthor = async () => {
+  submitted.value = true;
+
+  if (isFormValid.value){
+    if (isEdit.value){
+      try {
+        await api.put(`/api/books/${bookId}`, form);
+        await Swal.fire('Sucesso!', 'O livro foi editado com sucesso.', 'success');
+        router.push('/books');
+      } catch (error) {
+        Swal.fire('Erro!', error.response.data.message, 'error');
+      }
+    } else {
+      try {
+        await api.post('/api/books/', form);
+        await Swal.fire('Sucesso!', 'O livro foi criado com sucesso.', 'success');
+        router.push('/books');
+      } catch (error) {
+        Swal.fire('Erro!', error.response.data.message, 'error');
+      }
+    }
+  }
+}
 
 const authors = ref([]);
 
