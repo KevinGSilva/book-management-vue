@@ -4,6 +4,7 @@ import { computed, reactive, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import router from '@/router';
 
 const route = useRoute();
 const authorId = route.params.id || null;
@@ -53,14 +54,16 @@ const updateOrCreateAuthor = async () => {
     if (isEdit.value){
       try {
         await api.put(`/api/authors/${authorId}`, form);
-        Swal.fire('Sucesso!', 'O autor foi editado com sucesso.', 'success');
+        await Swal.fire('Sucesso!', 'O autor foi editado com sucesso.', 'success');
+        router.push('/authors');
       } catch (error) {
         Swal.fire('Erro!', error.response.data.message, 'error');
       }
     } else {
       try {
         await api.post('/api/authors/', form);
-        Swal.fire('Sucesso!', 'O autor foi criado com sucesso.', 'success');
+        await Swal.fire('Sucesso!', 'O autor foi criado com sucesso.', 'success');
+        router.push('/authors');
       } catch (error) {
         Swal.fire('Erro!', error.response.data.message, 'error');
       }
