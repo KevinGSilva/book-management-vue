@@ -9,6 +9,10 @@ onMounted( async () => {
   authors.value = response.data;
 });
 
+const authorStatus = (status) => {
+  return status ? 'Ativo' : 'Inativo';
+};
+
 </script>
 
 <template>
