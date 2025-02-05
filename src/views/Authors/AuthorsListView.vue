@@ -1,4 +1,13 @@
 <script setup>
+import api from '@/plugins/axios';
+import { onMounted, ref } from 'vue';
+
+const authors = ref([]);
+
+onMounted( async () => {
+  let response = await api.get('/api/authors');
+  authors.value = response.data;
+});
 
 </script>
 
@@ -19,10 +28,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                <tr v-for="author in authors" :key="author.id">
+                  <td>{{ author.id }}</td>
+                  <td>{{ author.name }}</td>
+                  <td>{{ authorStatus(author.status) }}</td>
                   <td>
                     <a href="#" class="btn btn-warning">Edit</a>
                     <button type="button" class="btn btn-danger" data-id="">Delete</button>
