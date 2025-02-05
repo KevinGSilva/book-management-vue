@@ -25,6 +25,11 @@ const router = createRouter({
           name: 'authors.create', 
           component: () => import('../components/authors/Form.vue'),
         },
+        {
+          path: '/authors/edit/:id', 
+          name: 'authors.edit', 
+          component: () => import('../components/authors/Form.vue'),
+        },
       ]
     },
     {
