@@ -1,5 +1,7 @@
 <script setup>
 import api from '@/plugins/axios';
+import { computed, reactive, onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const bookId = route.params.id || null;
@@ -25,8 +27,21 @@ const fetchBook = async () => {
     }
   }
 };
+
+const authors = ref([]);
+
+const fetchAuthors = async () => {
+  try {
+    const response = await api.get('/api/authors');
+    authors.value = response.data;
+  } catch (error) {
+    console.error('Erro ao buscar autores:', error);
+  }
+};
+
 onMounted(() => {
   fetchBook();
+  fetchAuthors();
 });
 </script>
 
