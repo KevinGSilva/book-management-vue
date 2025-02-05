@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import router from '@/router';
+import { format, parseISO } from 'date-fns';
 
 const route = useRoute();
 const authorId = route.params.id || null;
@@ -16,11 +17,16 @@ const form = reactive({
   status: '',
 });
 
+const books = ref([]);
+
 const fetchAuthor = async () => {
   if (isEdit.value) {
     try {
       const response = await api.get(`/api/authors/${authorId}`);
       Object.assign(form, response.data);
+
+      const responseBook = await api.get(`/api/authors/${authorId}/books`);
+      books.value = responseBook.data;
     } catch (error) {
       console.error('Erro ao buscar autor:', error);
     }
@@ -74,6 +80,11 @@ const updateOrCreateAuthor = async () => {
 onMounted(() => {
   fetchAuthor();
 });
+
+const formatDate = (dateString) => {
+  if (!dateString) return '';
+  return format(parseISO(dateString), 'dd/MM/yyyy');
+};
 </script>
 
 <template>
@@ -109,6 +120,31 @@ onMounted(() => {
                       </div>
                       <button class="btn btn-primary btn-block" type="button" @click="updateOrCreateAuthor">Salvar</button>
                     </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-8" v-if="isEdit">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                  <span>Livros</span>
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-bordered" id="content">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Título</th>
+                          <th>Data de publicação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="book in books" :key="book.id">
+                          <td>{{ book.id }}</td>
+                          <td>{{ book.title }}</td>
+                          <td>{{ formatDate(book.published_at) }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
