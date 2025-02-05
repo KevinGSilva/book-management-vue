@@ -97,6 +97,20 @@ onMounted(() => {
   fetchBook();
   fetchAuthors();
 });
+
+const handleFileChange = (event) => {
+  const file = event.target.files[0];
+
+  const reader = new FileReader();
+  
+  reader.onloadend = () => {
+    const base64File = reader.result.split(',')[1];
+    
+    form.cover = base64File;
+  };
+  
+  reader.readAsDataURL(file);
+};
 </script>
 
 <template>
