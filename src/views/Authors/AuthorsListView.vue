@@ -48,7 +48,10 @@ const deleteAuthor = async (id) => {
     <div class="row mt-4">
       <div class="col-lg-12">
         <div class="card">
-          <div class="card-header">Autores</div>
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Autores</span>
+            <RouterLink to="/authors/create" class="btn btn-primary">Novo autor</RouterLink>
+          </div>
           <div class="card-body">
             <table class="table table-bordered" id="content">
               <thead>
