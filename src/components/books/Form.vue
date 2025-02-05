@@ -28,6 +28,33 @@ const fetchBook = async () => {
   }
 };
 
+const submitted = ref(false);
+
+const errors = computed(() => {
+  if (!submitted.value) return {};
+  const errs = {};
+
+  if (!form.title) {
+    errs.title = "O título é obrigatório.";
+  }
+
+  if (!form.author_id) {
+    errs.author_id = "O Autor é obrigatório.";
+  }
+
+  if (!form.published_at) {
+    errs.published_at = "Data de publicação é obrigatório.";
+  }
+
+  if (!form.description) {
+    errs.description = "A descrição é obrigatório.";
+  }
+
+  return errs;
+});
+
+const isFormValid = computed(() => Object.keys(errors.value).length === 0);
+
 const authors = ref([]);
 
 const fetchAuthors = async () => {
