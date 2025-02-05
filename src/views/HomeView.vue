@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { GlHamburger } from '@kalimahapps/vue-icons';
-import { FaAngleDown } from '@kalimahapps/vue-icons';
 import { AnOutlinedLogout } from '@kalimahapps/vue-icons';
 import { FlFilledPeopleQueue } from '@kalimahapps/vue-icons';
 import api from '@/plugins/axios';
