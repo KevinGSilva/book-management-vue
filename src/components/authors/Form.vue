@@ -43,6 +43,29 @@ const errors = computed(() => {
 
 const isFormValid = computed(() => Object.keys(errors.value).length === 0);
 
+const updateOrCreateAuthor = async () => {
+
+  submitted.value = true;
+
+  if (isFormValid.value){
+    if (isEdit.value){
+      try {
+        await api.put(`/api/authors/${authorId}`, form);
+        Swal.fire('Sucesso!', 'O autor foi editado com sucesso.', 'success');
+      } catch (error) {
+        Swal.fire('Erro!', error.response.data.message, 'error');
+      }
+    } else {
+      try {
+        await api.post('/api/authors/', form);
+        Swal.fire('Sucesso!', 'O autor foi criado com sucesso.', 'success');
+      } catch (error) {
+        Swal.fire('Erro!', error.response.data.message, 'error');
+      }
+    }
+  }
+}
+
 onMounted(() => {
   fetchAuthor();
 });
