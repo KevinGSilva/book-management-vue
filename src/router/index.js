@@ -15,7 +15,11 @@ const router = createRouter({
         });
       },
       children: [
-        
+        {
+          path: '/authors', 
+          name: 'authors', 
+          component: () => import('../views/Authors/AuthorsListView.vue'),
+        },
       ]
     },
     {
