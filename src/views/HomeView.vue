@@ -68,12 +68,12 @@ const logout = async () => {
                   
                 <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
                   <div class="nav-link-icon"><i data-feather="tool"></i></div>
-                  Utilities
+                  Autores
                   <div class="sidenav-collapse-arrow"><FaAngleDown/></div>
                 </a>
                   <div class="collapse" id="collapseUtilities" data-bs-parent="#accordionSidenav">
                     <nav class="sidenav-menu-nested nav">
-                      <a class="nav-link" href="animations.html">Animations</a>
+                      <RouterLink to="/authors" class="nav-link">Listar</RouterLink>
                     </nav>
                   </div>
               </div>
