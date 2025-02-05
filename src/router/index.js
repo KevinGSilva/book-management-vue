@@ -16,6 +16,11 @@ const router = createRouter({
       },
       children: [
         {
+          path: '',
+          name: 'home',
+          component: () => import('../components/books/Card.vue'),
+        },
+        {
           path: '/authors', 
           name: 'authors', 
           component: () => import('../views/Authors/AuthorsListView.vue'),
