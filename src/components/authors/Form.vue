@@ -1,4 +1,10 @@
 <script setup>
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const authorId = route.params.id || null;
+
+const isEdit = computed(() => authorId !== null);
 </script>
 
 <template>
