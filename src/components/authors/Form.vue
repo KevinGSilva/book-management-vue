@@ -2,6 +2,8 @@
 import api from '@/plugins/axios';
 import { computed, reactive, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 const route = useRoute();
 const authorId = route.params.id || null;
