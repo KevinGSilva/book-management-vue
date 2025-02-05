@@ -1,13 +1,14 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { GlHamburger } from '@kalimahapps/vue-icons';
-import { FaAngleDown } from '@kalimahapps/vue-icons';
 import { AnOutlinedLogout } from '@kalimahapps/vue-icons';
 import { FlFilledPeopleQueue } from '@kalimahapps/vue-icons';
 import api from '@/plugins/axios';
 
 const sidebarToggle = ref(false);
 const user = ref({});
+
+const appName = import.meta.env.VITE_APP_NAME;
 
 const toggleSidebar = () => {
   sidebarToggle.value = !sidebarToggle.value;
@@ -34,7 +35,7 @@ const logout = async () => {
           <GlHamburger/>
         </button>
         
-        <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">SB Admin Pro</a>
+        <RouterLink to="/" class="navbar-brand pe-3 ps-4 ps-lg-2">{{ appName ?? 'Gestão' }}</RouterLink>
         
         <ul class="navbar-nav align-items-center ms-auto">
             
