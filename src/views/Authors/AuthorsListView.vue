@@ -1,6 +1,8 @@
 <script setup>
 import api from '@/plugins/axios';
 import { onMounted, ref } from 'vue';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 const authors = ref([]);
 
@@ -11,6 +13,29 @@ onMounted( async () => {
 
 const authorStatus = (status) => {
   return status ? 'Ativo' : 'Inativo';
+};
+
+const deleteAuthor = async (id) => {
+  const result = await Swal.fire({
+    title: 'Tem certeza?',
+    text: 'Essa ação não pode ser desfeita!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Sim, excluir!',
+    cancelButtonText: 'Cancelar'
+  });
+
+  if (result.isConfirmed) {
+    try {
+      await api.delete(`/api/authors/${id}`);
+      authors.value = authors.value.filter(author => author.id !== id);
+      Swal.fire('Excluído!', 'O autor foi excluído.', 'success');
+    } catch (error) {
+      Swal.fire('Erro!', error.response.data.message, 'error');
+    }
+  }
 };
 
 </script>
@@ -37,8 +62,9 @@ const authorStatus = (status) => {
                   <td>{{ author.name }}</td>
                   <td>{{ authorStatus(author.status) }}</td>
                   <td>
-                    <a href="#" class="btn btn-warning">Edit</a>
-                    <button type="button" class="btn btn-danger" data-id="">Delete</button>
+                    <a href="#" class="mx-2" @click="deleteAuthor(author.id)">
+                      <AnFilledDelete  class="text-red fs-4" />
+                    </a>
                   </td>
                 </tr>
               </tbody>
