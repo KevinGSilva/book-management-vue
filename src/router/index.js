@@ -30,6 +30,21 @@ const router = createRouter({
           name: 'authors.edit', 
           component: () => import('../components/authors/Form.vue'),
         },
+        {
+          path: '/books',
+          name: 'books',
+          component: () => import('../views/Books/BooksListView.vue'),
+        },
+        {
+          path: '/books/create', 
+          name: 'books.create', 
+          component: () => import('../components/books/Form.vue'),
+        },
+        {
+          path: '/books/edit/:id', 
+          name: 'books.edit', 
+          component: () => import('../components/books/Form.vue'),
+        },
       ]
     },
     {
