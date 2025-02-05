@@ -1,4 +1,13 @@
 <script setup>
+import api from '@/plugins/axios';
+import { onMounted, ref } from 'vue';
+
+const books = ref([]);
+
+onMounted( async () => {
+  let response = await api.get('/api/books?withAuthor=true');
+  books.value = response.data;
+});
 </script>
 
 <template>
