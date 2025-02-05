@@ -176,7 +176,7 @@ const handleFileChange = (event) => {
                               <div class="col-lg-12">
                                 <div class="mb-3">
                                   <label class="small mb-1" for="cover">Foto de capa</label>
-                                  <input class="form-control" name="cover" type="file" placeholder="Foto de capa" @change="handleFileChange" :class="{ 'is-invalid': errors.cover }" />
+                                  <input class="form-control" name="cover" type="file" placeholder="Foto de capa" @change="handleFileChange" :class="{ 'is-invalid': errors.cover }" accept="image/png, image/jpeg, image/jpg" />
                                   <span  class="text-danger" v-if="errors.cover">{{ errors.cover }}</span>
                                 </div>
                               </div>
