@@ -65,18 +65,11 @@ const logout = async () => {
             <div class="sidenav-menu">
               <div class="nav accordion" id="accordionSidenav">
                   
-                <div class="sidenav-menu-heading">UI Toolkit</div>
-                  
-                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
+                <div class="sidenav-menu-heading">Autores</div>
+                <RouterLink to="/authors" class="nav-link">
                   <div class="nav-link-icon"><FlFilledPeopleQueue/></div>
                   Autores
-                  <div class="sidenav-collapse-arrow"><FaAngleDown/></div>
-                </a>
-                  <div class="collapse" id="collapseUtilities" data-bs-parent="#accordionSidenav">
-                    <nav class="sidenav-menu-nested nav">
-                      <RouterLink to="/authors" class="nav-link">Listar</RouterLink>
-                    </nav>
-                  </div>
+                </RouterLink>
               </div>
             </div>
           </nav>
