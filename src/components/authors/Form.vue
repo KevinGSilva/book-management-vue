@@ -24,6 +24,25 @@ const fetchAuthor = async () => {
   }
 };
 
+const submitted = ref(false);
+
+const errors = computed(() => {
+  if (!submitted.value) return {};
+  const errs = {};
+
+  if (!form.name) {
+    errs.name = "O nome é obrigatório.";
+  }
+
+  if (!form.status) {
+    errs.status = "O Estado é obrigatório.";
+  }
+
+  return errs;
+});
+
+const isFormValid = computed(() => Object.keys(errors.value).length === 0);
+
 onMounted(() => {
   fetchAuthor();
 });
