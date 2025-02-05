@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { GlHamburger } from '@kalimahapps/vue-icons';
 import { FaAngleDown } from '@kalimahapps/vue-icons';
 import { AnOutlinedLogout } from '@kalimahapps/vue-icons';
+import { FlFilledPeopleQueue } from '@kalimahapps/vue-icons';
 import api from '@/plugins/axios';
 
 const sidebarToggle = ref(false);
@@ -67,7 +68,7 @@ const logout = async () => {
                 <div class="sidenav-menu-heading">UI Toolkit</div>
                   
                 <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
-                  <div class="nav-link-icon"><i data-feather="tool"></i></div>
+                  <div class="nav-link-icon"><FlFilledPeopleQueue/></div>
                   Autores
                   <div class="sidenav-collapse-arrow"><FaAngleDown/></div>
                 </a>
