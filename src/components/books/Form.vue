@@ -168,6 +168,10 @@ const handleFileChange = (event) => {
                           </div>
                           <div class="col-lg-6">
                             <div class="row gx-3">
+                              <div class="col-lg-12 d-flex justify-content-center" v-if="form.cover_url">
+                                <div class="mb-3">
+                                  <img :src="form.cover_url" alt="">
+                                </div>
                               </div>
                               <div class="col-lg-12">
                                 <div class="mb-3">
