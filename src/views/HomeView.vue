@@ -70,6 +70,11 @@ const logout = async () => {
                   <div class="nav-link-icon"><FlFilledPeopleQueue/></div>
                   Autores
                 </RouterLink>
+                <div class="sidenav-menu-heading">Livros</div>
+                <RouterLink to="/books" class="nav-link">
+                  <div class="nav-link-icon"><FlFilledPeopleQueue/></div>
+                  Livros
+                </RouterLink>
               </div>
             </div>
           </nav>
