@@ -3,7 +3,9 @@ import api from '@/plugins/axios';
 import { onMounted, ref } from 'vue';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import { AnFilledDelete } from '@kalimahapps/vue-icons';
 import { RouterLink } from 'vue-router';
+import { FeEdit } from '@kalimahapps/vue-icons';
 
 const authors = ref([]);
 
