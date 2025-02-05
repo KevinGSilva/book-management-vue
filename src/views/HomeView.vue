@@ -8,6 +8,8 @@ import api from '@/plugins/axios';
 const sidebarToggle = ref(false);
 const user = ref({});
 
+const appName = import.meta.env.VITE_APP_NAME;
+
 const toggleSidebar = () => {
   sidebarToggle.value = !sidebarToggle.value;
   document.body.classList.toggle('sidenav-toggled', sidebarToggle.value);
@@ -33,7 +35,7 @@ const logout = async () => {
           <GlHamburger/>
         </button>
         
-        <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">SB Admin Pro</a>
+        <RouterLink to="/" class="navbar-brand pe-3 ps-4 ps-lg-2">{{ appName ?? 'Gestão' }}</RouterLink>
         
         <ul class="navbar-nav align-items-center ms-auto">
             
