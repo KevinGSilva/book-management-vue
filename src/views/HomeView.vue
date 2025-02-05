@@ -81,7 +81,7 @@ const logout = async () => {
           </nav>
         </div>
         <div id="layoutSidenav_content">
-          <div class="container-fluid" id="conteudo">
+          <div class="container-fluid px-4 mt-4" id="conteudo">
             <RouterView />
           </div>
           <footer class="footer-admin mt-auto footer-light">
