@@ -1,4 +1,33 @@
 <script setup>
+import api from '@/plugins/axios';
+
+const route = useRoute();
+const bookId = route.params.id || null;
+
+const isEdit = computed(() => bookId !== null);
+
+const form = reactive({
+  title: '',
+  author_id: '',
+  published_at: '',
+  description: '',
+  cover: '',
+  cover_url: '',
+});
+
+const fetchBook = async () => {
+  if (isEdit.value) {
+    try {
+      const response = await api.get(`/api/books/${bookId}`);
+      Object.assign(form, response.data);
+    } catch (error) {
+      console.error('Erro ao buscar livro:', error);
+    }
+  }
+};
+onMounted(() => {
+  fetchBook();
+});
 </script>
 
 <template>
