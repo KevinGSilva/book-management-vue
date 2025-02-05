@@ -1,10 +1,32 @@
 <script setup>
+import api from '@/plugins/axios';
+import { computed, reactive, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const authorId = route.params.id || null;
 
 const isEdit = computed(() => authorId !== null);
+
+const form = reactive({
+  name: '',
+  status: '',
+});
+
+const fetchAuthor = async () => {
+  if (isEdit.value) {
+    try {
+      const response = await api.get(`/api/authors/${authorId}`);
+      Object.assign(form, response.data);
+    } catch (error) {
+      console.error('Erro ao buscar autor:', error);
+    }
+  }
+};
+
+onMounted(() => {
+  fetchAuthor();
+});
 </script>
 
 <template>
