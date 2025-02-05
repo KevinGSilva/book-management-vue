@@ -3,6 +3,7 @@ import api from '@/plugins/axios';
 import { onMounted, ref } from 'vue';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import { RouterLink } from 'vue-router';
 
 const authors = ref([]);
 
@@ -62,6 +63,9 @@ const deleteAuthor = async (id) => {
                   <td>{{ author.name }}</td>
                   <td>{{ authorStatus(author.status) }}</td>
                   <td>
+                    <RouterLink :to="{ name: 'authors.edit', params: { id: author.id } }" class="mx-2">
+                      <FeEdit class="text-primary fs-4" />
+                    </RouterLink>
                     <a href="#" class="mx-2" @click="deleteAuthor(author.id)">
                       <AnFilledDelete  class="text-red fs-4" />
                     </a>
