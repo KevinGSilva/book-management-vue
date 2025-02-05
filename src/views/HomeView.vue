@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { GlHamburger } from '@kalimahapps/vue-icons';
 import { FaAngleDown } from '@kalimahapps/vue-icons';
 import { AnOutlinedLogout } from '@kalimahapps/vue-icons';
+import { FlFilledPeopleQueue } from '@kalimahapps/vue-icons';
 import api from '@/plugins/axios';
 
 const sidebarToggle = ref(false);
@@ -64,24 +65,17 @@ const logout = async () => {
             <div class="sidenav-menu">
               <div class="nav accordion" id="accordionSidenav">
                   
-                <div class="sidenav-menu-heading">UI Toolkit</div>
-                  
-                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
-                  <div class="nav-link-icon"><i data-feather="tool"></i></div>
-                  Utilities
-                  <div class="sidenav-collapse-arrow"><FaAngleDown/></div>
-                </a>
-                  <div class="collapse" id="collapseUtilities" data-bs-parent="#accordionSidenav">
-                    <nav class="sidenav-menu-nested nav">
-                      <a class="nav-link" href="animations.html">Animations</a>
-                    </nav>
-                  </div>
+                <div class="sidenav-menu-heading">Autores</div>
+                <RouterLink to="/authors" class="nav-link">
+                  <div class="nav-link-icon"><FlFilledPeopleQueue/></div>
+                  Autores
+                </RouterLink>
               </div>
             </div>
           </nav>
         </div>
         <div id="layoutSidenav_content">
-          <div class="container-fluid" id="conteudo">
+          <div class="container-fluid px-4 mt-4" id="conteudo">
             <RouterView />
           </div>
           <footer class="footer-admin mt-auto footer-light">
