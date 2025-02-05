@@ -6,6 +6,7 @@ const form = reactive({
   email: '',
   password: '',
   confirmPassword: '',
+  is_admin: true
 });
 
 const submitted = ref(false);
